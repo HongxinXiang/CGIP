@@ -1,11 +1,10 @@
 # Contrastive Graph-Image Pre-training (CGIP)
 
-Official PyTorch-based implementation in the paper [Chemical Structure-Aware Molecular Image Representation Learning](#), which is a simple and effective Contrastive Graph-Image Pre-training (CGIP) framework for molecular representation learning.
+Official PyTorch-based implementation in the paper [Chemical Structure-Aware Molecular Image Representation Learning](https://doi.org/10.1093/bib/bbad404), which is a simple and effective Contrastive Graph-Image Pre-training (CGIP) framework for molecular representation learning.
 
 <a href="https://github.com/HongxinXiang/CGIP/blob/master/LICENSE">
     <img alt="GitHub" src="https://img.shields.io/github/license/HongxinXiang/CGIP?style=flat-square">
-</a>
-<img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/HongxinXiang/CGIP?style=flat-square">
+</a><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/HongxinXiang/CGIP?style=flat-square">
 
 
 
@@ -317,5 +316,11 @@ You can evaluate the finetuned model by using the following command:
 
 If you use CGIP in scholary publications, presentations or to communicate with your satellite, please cite the following work that presents the algorithms used:
 ```bib
-TODO ...
+@article{xiang2023chemical,
+  title={Chemical structure-aware molecular image representation learning},
+  author={Xiang, Hongxin and Jin, Shuting and Liu, Xiangrong and Zeng, Xiangxiang and Zeng, Li},
+  journal={Briefings in bioinformatics},
+  year={2023},
+  publisher={Oxford University Press}
+}
 ```
