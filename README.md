@@ -318,11 +318,18 @@ You can evaluate the finetuned model by using the following command:
 
 If you use CGIP in scholary publications, presentations or to communicate with your satellite, please cite the following work that presents the algorithms used:
 ```bib
-@article{xiang2023chemical,
-  title={Chemical structure-aware molecular image representation learning},
-  author={Xiang, Hongxin and Jin, Shuting and Liu, Xiangrong and Zeng, Xiangxiang and Zeng, Li},
-  journal={Briefings in bioinformatics},
-  year={2023},
-  publisher={Oxford University Press}
+@article{10.1093/bib/bbad404,
+    author = {Xiang, Hongxin and Jin, Shuting and Liu, Xiangrong and Zeng, Xiangxiang and Zeng, Li},
+    title = "{Chemical structure-aware molecular image representation learning}",
+    journal = {Briefings in Bioinformatics},
+    volume = {24},
+    number = {6},
+    pages = {bbad404},
+    year = {2023},
+    month = {11},
+    issn = {1477-4054},
+    doi = {10.1093/bib/bbad404},
+    url = {https://doi.org/10.1093/bib/bbad404},
+    eprint = {https://academic.oup.com/bib/article-pdf/24/6/bbad404/53471469/bbad404.pdf},
 }
 ```
