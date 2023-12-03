@@ -95,7 +95,6 @@ def load_filenames_labels_smiles(image_folder, txt_file, task_type="classificati
 
 def get_datasets(dataset, dataroot, data_type="raw"):
     '''
-    目录结构必须满足：
     [dataroot] F:/data/
         * [datasetname] bbbp
             * [data_type] raw
