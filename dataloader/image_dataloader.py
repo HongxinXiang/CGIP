@@ -96,8 +96,8 @@ def load_filenames_labels_smiles(image_folder, txt_file, task_type="classificati
 def get_datasets(dataset, dataroot, data_type="raw"):
     '''
     目录结构必须满足：
-    [dataroot] F:/data/生信/finetune数据集临时调试使用/SARS-CoV-2/
-        * [datasetname] SARS-CoV_Pseudotyped_particle_entry_(VeroE6_tox_counterscreen)
+    [dataroot] F:/data/
+        * [datasetname] bbbp
             * [data_type] raw
                 * 224
                     * 1.png
