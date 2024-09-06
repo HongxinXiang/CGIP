@@ -9,12 +9,61 @@ Official PyTorch-based implementation in the paper [Chemical Structure-Aware Mol
 </div>
 
 
-
 ## News!
+
+**[2024/09/06]** Add some experiments and discoveries by exploring gap between graph-image CL and graph-geometry CL.
 
 **[2023/10/20]** Accepted in *Briefings in Bioinformatics*.
 
 **[2022/11/17]** Repository installation completed.
+
+
+
+## Updates!
+
+### 2024.09.06 Exploration experiments between graph-image CL and graph-geometry CL
+
+We would like to add some new results to CGIP. 
+
+**Experimental Motivations:** Helps us clarify the gap between graph-image contrastive learning (CL) and graph-geometry contrastive learning (GraphMVP) under strict scaffold split conditions through this clearer comparison.
+
+The experimental setup is as follows:
+
+- **Pre-training dataset:** 2 million molecules from [IEM](https://www.ijcai.org/proceedings/2024/675). If you want the data, please click [the link](https://1drv.ms/u/s!Atau0ecyBQNTgRH30gPFlqS5CO5v?e=Qj69TB) to download
+- **We follow the settings of GraphMVP**. The information in the following items is consistent with GraphMVP:
+  - Graph Encoder: GIN.
+  - Pre-training data size: 2 million molecules.
+- Random seeds = 0,1, 2.
+
+We pre-trained GIN for 10 epochs according to the CGIP code. The checkpoints are follows:
+
+| Model                                  | Checkpoint                                                   | Description                                                  |
+| -------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| ckpt_epoch=9_loss=0.22_CGIP_no_aug.pth | [OneDrive](https://1drv.ms/u/s!Atau0ecyBQNThm4lveWp7EokNBkC?e=8TfTUb) | Only retains the cross-modal loss and removes the intra-modal loss based on data augmentation. |
+| ckpt_epoch=9_loss=0.42_CGIP.pth        | [OneDrive](https://1drv.ms/u/s!Atau0ecyBQNThm3OzY19qJ04Na71?e=dy7fQd) | CGIP                                                         |
+
+We evaluate GIN model in these checkpoints on 8 molecular property prediction tasks (classification tasks and using ROC-AUC metric).
+
+|                    | BBBP       | Tox21      | ToxCast    | Sider      | ClinTox    | MUV        | HIV        | Bace       | Avg       |
+| ------------------ | ---------- | ---------- | ---------- | ---------- | ---------- | ---------- | ---------- | ---------- | --------- |
+| -                  | 65.4(2.4)  | 74.9(0.8)  | 61.6(1.2)  | 58.0(2.4)  | 58.8(5.5)  | 71.0(2.5)  | 75.3(0.5)  | 72.6(4.9)  | 67.21     |
+| InfoGraph          | 69.2(0.8)  | 73.0(0.7)  | 62.0(0.3)  | 59.2(0.2)  | 75.1(5.0)  | 74.0(1.5)  | 74.5(1.8)  | 73.9(2.5)  | 70.10     |
+| GraphCL            | 67.5(3.3)  | 75.0(0.3)  | 62.8(0.2)  | 60.1(1.3)  | 78.9(4.2)  | 77.1(1.0)  | 75.0(0.4)  | 68.7(7.8)  | 70.64     |
+| GraphMVP           | 68.5(0.2)  | 74.5(0.4)  | 62.7(0.1)  | 62.3(1.6)  | 79.0(2.5)  | 75.0(1.4)  | 74.8(1.4)  | 76.8(1.1)  | 71.69     |
+| **CGIP**           | 68.47(0.7) | 74.86(0.5) | 61.44(1.2) | 59.87(1.6) | 85.96(1.2) | 74.30(3.3) | 74.31(0.8) | 76.34(2.5) | **71.94** |
+| **CGIP (w/o aug)** | 69.49      | 74.73      | 62.80      | 59.40      | 86.33      | 71.94      | 76.36      | 76.80      | **72.23** |
+
+Please note that :
+
+- Since this is a simple exploratory experiment, the goal is to take a glimpse at the potential of CGIP by comparing with graph-image CL and graph-geometry CL, and we did not do any optimization on CGIP. That is why you can see that CGIP is not as good as CGIP_no_aug, whose loss has not yet fully converged (loss=0.42>0.22).
+- Except for CGIP, other results are directly copied from GraphMVP. Since there is too much data, we did not paste all the results here. If you are interested, you can go to the original paper of GraphMVP. GraphMVP-G and GraphMVP-C are not considered here because they introduce non-contrastive learning methods.
+- Sorry, we forgot to calculate the variance of CGIP (w/o aug).
+
+**Conclusion:**
+
+- 2D images give GIN more performance gains than 3D geometry (GraphMVP). 
+
+In addition, we will have another work to further discuss this matter, so stay tuned.
 
 
 
